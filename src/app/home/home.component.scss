@@ -1,0 +1,20 @@
+h2 {
+  font-weight: 600;
+}
+.project-wall {
+  display: grid;
+  grid-template-columns: minmax(200px, 300px);
+  grid-template-rows: auto;
+  .project-card {
+    padding: 10px 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:hover {
+        cursor: pointer;
+    }
+  }
+}

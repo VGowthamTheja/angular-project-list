@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="container__stepper">
+    @for (step of stepList; track $index) {
+    <div class="step">
+      <div
+        class="step-content"
+        [ngClass]="{ 'inactive-content': !(step.id === activeStep().id) }"
+      >
+        <h4>{{ step.stepName }}</h4>
+      </div>
+      <div
+        (click)="updateActiveStep(step)"
+        [ngClass]="[
+          'step-number',
+          step.completed ? 'completed' : '',
+          step.id === activeStep().id ? 'active' : ''
+        ]"
+      ></div>
+    </div>
+    }
+  </div>
+  <div class="container__form">
+    <form *ngIf="activeStep().id === 0" action="">
+        Basic Details form
+      </form>
+      <form *ngIf="activeStep().id === 1" action="">
+        Skill form
+      </form>
+      <form *ngIf="activeStep().id === 2" action="">
+        Experience form
+      </form>
+  </div>
+</div>

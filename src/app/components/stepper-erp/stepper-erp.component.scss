@@ -1,0 +1,85 @@
+h4 {
+  margin-top: -4px;
+}
+.container {
+  display: flex;
+
+  &__stepper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px;
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 100px;
+      position: relative;
+      width: 100%;
+
+      .step-number {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #ccc;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        position: relative;
+        z-index: 1;
+        transform: scale(1);
+        opacity: 0.5;
+        transition: background-color 0.3s ease, transform 0.3s ease,
+          opacity 0.3s ease;
+
+        &.completed {
+          background-color: #4caf50; // Green for completed
+        }
+
+        &.active {
+          background-color: #2196f3; // Blue for active
+          transform: scale(1.5);
+          opacity: 1;
+        }
+
+        &:hover {
+          cursor: pointer;
+          outline: 2px solid #2196f3;
+        }
+      }
+
+      .step-content {
+        margin-left: 20px;
+      }
+
+      .step-content.inactive-content {
+        color: #aaa;
+        opacity: 0.5;
+      }
+
+      &:not(:last-child)::after {
+        content: "";
+        width: 2px;
+        height: calc(100% + 90px);
+        background-color: #ccc;
+        position: absolute;
+        right: 4px;
+        top: 10px;
+        z-index: 0;
+      }
+
+      &:has(.step-number.completed)::after {
+        background-color: #4caf50; // Green for completed connector
+      }
+    }
+  }
+
+  &__form {
+    flex: 5;
+    height: 100%;
+  }
+}
